@@ -31,9 +31,8 @@ export default function Capacidades() {
         </div>
 
         <div
-          className="reveal d1 grid"
+          className="reveal d1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           style={{
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
             gap: 1,
             background: "var(--line)",
             border: "1px solid var(--line)",

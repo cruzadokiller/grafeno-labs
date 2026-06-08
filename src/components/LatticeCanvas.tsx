@@ -29,7 +29,7 @@ export default function LatticeCanvas() {
       h = canvas!.offsetHeight;
       canvas!.width = w * dpr;
       canvas!.height = h * dpr;
-      ctx!.scale(dpr, dpr);
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
       nodes = Array.from({ length: COUNT }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
