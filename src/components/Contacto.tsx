@@ -33,10 +33,42 @@ const inputStyle: React.CSSProperties = {
 
 export default function Contacto() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setSending(true);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      nombre: String(data.get("nombre") || ""),
+      empresa: String(data.get("empresa") || ""),
+      email: String(data.get("email") || ""),
+      reto: String(data.get("reto") || ""),
+      mensaje: String(data.get("mensaje") || ""),
+    };
+
+    try {
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error || "No se pudo enviar el mensaje.");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "No se pudo enviar el mensaje.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -131,9 +163,19 @@ export default function Contacto() {
                   />
                 </Field>
 
-                <button type="submit" className="btn btn-primary" style={{ width: "100%", justifyContent: "center", marginTop: 6 }}>
-                  Enviar mensaje <span className="arrow">→</span>
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={sending}
+                  style={{ width: "100%", justifyContent: "center", marginTop: 6, opacity: sending ? 0.7 : 1, cursor: sending ? "wait" : "pointer" }}
+                >
+                  {sending ? "Enviando…" : "Enviar mensaje"} <span className="arrow">→</span>
                 </button>
+                {error && (
+                  <p style={{ fontSize: "0.84rem", color: "#ff8a8a", marginTop: 12, textAlign: "center" }}>
+                    {error}
+                  </p>
+                )}
                 <p style={{ fontSize: "0.78rem", color: "var(--muted)", marginTop: 14, textAlign: "center" }}>
                   Te respondemos en menos de 24 horas hábiles.
                 </p>
