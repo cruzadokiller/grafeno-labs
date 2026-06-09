@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/icon.png",
   },
+  alternates: {
+    canonical: "https://grafenolabs.cl/",
+  },
   openGraph: {
     title: "Grafeno Labs — No construimos webs, construimos crecimiento digital",
     description:
