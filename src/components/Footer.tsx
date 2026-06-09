@@ -13,7 +13,7 @@ export default function Footer() {
           <div style={{ maxWidth: 300 }}>
             <Link href="#top" className="flex items-center gap-3 no-underline" style={{ color: "var(--ink)" }}>
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Grafeno Labs"
                 width={120}
                 height={32}

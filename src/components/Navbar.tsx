@@ -53,7 +53,7 @@ export default function Navbar() {
           onClick={closeMobile}
         >
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             alt="Grafeno Labs"
             width={120}
             height={32}
