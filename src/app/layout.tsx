@@ -52,7 +52,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
-      lang="es"
+      lang="es-CL"
       className={`${chakraPetch.variable} ${hankenGrotesk.variable}`}
       style={
         {
