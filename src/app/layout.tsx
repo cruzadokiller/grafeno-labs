@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
   },
+  other: {
+    "msvalidate.01": "AF34C7A7EB7C10F97986D73D22DE01CF",
+  },
   alternates: {
     canonical: "https://grafenolabs.cl/",
   },
