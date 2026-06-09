@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const points = [
   "Diagnóstico inicial sin compromiso",
@@ -29,9 +29,124 @@ const inputStyle: React.CSSProperties = {
   fontSize: "0.96rem",
   transition: "0.2s",
   outline: "none",
-  colorScheme: "dark",
 };
 
+/* ── Custom dropdown ───────────────────────────────────────── */
+function CustomSelect({
+  name,
+  options,
+  placeholder = "Selecciona una opción",
+  required,
+}: {
+  name: string;
+  options: string[];
+  placeholder?: string;
+  required?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState("");
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    function handler(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  return (
+    <div ref={ref} style={{ position: "relative" }}>
+      {/* Hidden real input for form submission */}
+      <input type="hidden" name={name} value={selected} required={required} />
+
+      {/* Trigger button */}
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        style={{
+          ...inputStyle,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          cursor: "pointer",
+          color: selected ? "var(--ink)" : "var(--muted)",
+          textAlign: "left",
+        }}
+      >
+        <span>{selected || placeholder}</span>
+        <svg
+          viewBox="0 0 24 24"
+          style={{
+            width: 16,
+            height: 16,
+            flexShrink: 0,
+            stroke: "var(--ink-dim)",
+            fill: "none",
+            strokeWidth: 2,
+            transition: "transform 0.2s",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+          }}
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
+
+      {/* Dropdown panel */}
+      {open && (
+        <div
+          style={{
+            position: "absolute",
+            top: "calc(100% + 6px)",
+            left: 0,
+            right: 0,
+            background: "#0e1116",
+            border: "1px solid var(--line-strong)",
+            borderRadius: 10,
+            overflow: "hidden",
+            zIndex: 50,
+            boxShadow: "0 16px 40px rgba(0,0,0,0.6)",
+          }}
+        >
+          {options.map((opt) => (
+            <button
+              key={opt}
+              type="button"
+              onClick={() => { setSelected(opt); setOpen(false); }}
+              style={{
+                display: "block",
+                width: "100%",
+                textAlign: "left",
+                padding: "11px 15px",
+                background: selected === opt ? "rgba(95,180,255,.1)" : "transparent",
+                color: selected === opt ? "var(--accent)" : "var(--ink)",
+                fontFamily: "var(--body)",
+                fontSize: "0.93rem",
+                border: "none",
+                cursor: "pointer",
+                borderBottom: "1px solid var(--line)",
+                transition: "background 0.15s",
+              }}
+              onMouseEnter={(e) => {
+                if (selected !== opt)
+                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.background =
+                  selected === opt ? "rgba(95,180,255,.1)" : "transparent";
+              }}
+            >
+              {opt}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── Main component ────────────────────────────────────────── */
 export default function Contacto() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
@@ -189,20 +304,12 @@ export default function Contacto() {
                   </div>
                 </Field>
                 <Field label="Tipo de proyecto">
-                  <select
-                    id="reto"
+                  <CustomSelect
                     name="reto"
+                    options={projectTypes}
+                    placeholder="Selecciona una opción"
                     required
-                    defaultValue=""
-                    style={{ ...inputStyle, appearance: "none", cursor: "pointer" }}
-                  >
-                    <option value="" disabled style={{ background: "#0e1116", color: "var(--muted)" }}>
-                      Selecciona una opción
-                    </option>
-                    {projectTypes.map((t) => (
-                      <option key={t} style={{ background: "#0e1116", color: "var(--ink)" }}>{t}</option>
-                    ))}
-                  </select>
+                  />
                 </Field>
                 <Field label="Contexto">
                   <textarea
