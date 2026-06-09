@@ -29,6 +29,7 @@ const inputStyle: React.CSSProperties = {
   fontSize: "0.96rem",
   transition: "0.2s",
   outline: "none",
+  colorScheme: "dark",
 };
 
 export default function Contacto() {
@@ -43,10 +44,12 @@ export default function Contacto() {
 
     const form = e.currentTarget;
     const data = new FormData(form);
+    const telefono = data.get("telefono") ? `+569${data.get("telefono")}` : "";
     const payload = {
       nombre: String(data.get("nombre") || ""),
       empresa: String(data.get("empresa") || ""),
       email: String(data.get("email") || ""),
+      telefono,
       reto: String(data.get("reto") || ""),
       mensaje: String(data.get("mensaje") || ""),
     };
@@ -144,13 +147,60 @@ export default function Contacto() {
                 <Field label="Email">
                   <input id="email" name="email" type="email" placeholder="nombre@empresa.com" required style={inputStyle} />
                 </Field>
+                <Field label="Teléfono (opcional)">
+                  <div className="flex" style={{ gap: 0, border: "1px solid var(--line-strong)", borderRadius: 10, overflow: "hidden", background: "rgba(0,0,0,.35)" }}>
+                    <span style={{
+                      display: "flex",
+                      alignItems: "center",
+                      padding: "13px 14px",
+                      color: "var(--ink-dim)",
+                      fontFamily: "var(--body)",
+                      fontSize: "0.96rem",
+                      borderRight: "1px solid var(--line-strong)",
+                      whiteSpace: "nowrap",
+                      background: "rgba(255,255,255,.03)",
+                      userSelect: "none",
+                    }}>
+                      +569
+                    </span>
+                    <input
+                      id="telefono"
+                      name="telefono"
+                      type="tel"
+                      inputMode="numeric"
+                      placeholder="12345678"
+                      maxLength={8}
+                      pattern="\d{8}"
+                      style={{
+                        flex: 1,
+                        background: "transparent",
+                        border: "none",
+                        padding: "13px 15px",
+                        color: "var(--ink)",
+                        fontFamily: "var(--body)",
+                        fontSize: "0.96rem",
+                        outline: "none",
+                      }}
+                      onInput={(e) => {
+                        const el = e.currentTarget;
+                        el.value = el.value.replace(/\D/g, "").slice(0, 8);
+                      }}
+                    />
+                  </div>
+                </Field>
                 <Field label="Tipo de proyecto">
-                  <select id="reto" name="reto" required defaultValue="" style={{ ...inputStyle, appearance: "none", cursor: "pointer" }}>
-                    <option value="" disabled>
+                  <select
+                    id="reto"
+                    name="reto"
+                    required
+                    defaultValue=""
+                    style={{ ...inputStyle, appearance: "none", cursor: "pointer" }}
+                  >
+                    <option value="" disabled style={{ background: "#0e1116", color: "var(--muted)" }}>
                       Selecciona una opción
                     </option>
                     {projectTypes.map((t) => (
-                      <option key={t}>{t}</option>
+                      <option key={t} style={{ background: "#0e1116", color: "var(--ink)" }}>{t}</option>
                     ))}
                   </select>
                 </Field>

@@ -11,6 +11,7 @@ type Payload = {
   nombre?: string;
   empresa?: string;
   email?: string;
+  telefono?: string;
   reto?: string;
   mensaje?: string;
 };
@@ -42,7 +43,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Cuerpo de solicitud inválido." }, { status: 400 });
   }
 
-  const { nombre, empresa, email, reto, mensaje } = data;
+  const { nombre, empresa, email, telefono, reto, mensaje } = data;
 
   if (!nombre || !email || !reto) {
     return NextResponse.json(
@@ -64,6 +65,7 @@ export async function POST(request: Request) {
         <p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p>
         ${empresa ? `<p><strong>Empresa:</strong> ${escapeHtml(empresa)}</p>` : ""}
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        ${telefono ? `<p><strong>Teléfono:</strong> ${escapeHtml(telefono)}</p>` : ""}
         <p><strong>Tipo de proyecto:</strong> ${escapeHtml(reto)}</p>
         ${mensaje ? `<p><strong>Contexto:</strong></p><p>${escapeHtml(mensaje).replace(/\n/g, "<br/>")}</p>` : ""}
       `,
@@ -72,6 +74,7 @@ export async function POST(request: Request) {
         `Nombre: ${nombre}`,
         empresa ? `Empresa: ${empresa}` : null,
         `Email: ${email}`,
+        telefono ? `Teléfono: ${telefono}` : null,
         `Tipo de proyecto: ${reto}`,
         mensaje ? `Contexto: ${mensaje}` : null,
       ]
