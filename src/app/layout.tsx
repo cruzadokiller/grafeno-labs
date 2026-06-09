@@ -22,11 +22,21 @@ export const metadata: Metadata = {
   title: "Grafeno Labs — Crecimiento digital: marketing, desarrollo e IA",
   description:
     "Laboratorio digital de punta a punta: posicionamiento orgánico (SEO, GEO, AEO), medios pagados, CRO, desarrollo web y de apps, e-commerce e inteligencia artificial aplicada para hacer crecer tu negocio.",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
+  },
   openGraph: {
     title: "Grafeno Labs — No construimos webs, construimos crecimiento digital",
     description:
       "Laboratorio de experimentación donde la arquitectura técnica es el soporte de una estrategia comercial de alto rendimiento.",
     type: "website",
+    url: "https://grafenolabs.cl",
+    images: [{ url: "https://grafenolabs.cl/icon.png" }],
   },
 };
 
