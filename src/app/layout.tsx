@@ -12,7 +12,7 @@ const chakraPetch = Chakra_Petch({
 });
 
 const hankenGrotesk = Hanken_Grotesk({
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-hanken",
   display: "swap",
