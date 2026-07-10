@@ -153,6 +153,19 @@
   transform: none;
 }
 
+/* Hero elements: CSS-only animation, no JS needed → fast LCP */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero-in {
+  animation: hero-fade-up 0.75s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+}
+.hero-in.d1 { animation-delay: 0.05s; }
+.hero-in.d2 { animation-delay: 0.15s; }
+.hero-in.d3 { animation-delay: 0.25s; }
+
 .chip {
   font-family: var(--display);
   font-weight: 500;

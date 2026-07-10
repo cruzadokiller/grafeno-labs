@@ -7,7 +7,7 @@ export default function Hero() {
     >
       <div className="mx-auto px-7" style={{ maxWidth: 980 }}>
         <h1
-          className="reveal"
+          className="hero-in"
           style={{ fontSize: "clamp(2.6rem,6.4vw,5.1rem)", fontWeight: 700, marginBottom: 26 }}
         >
           <span className="block overflow-hidden">No construimos webs.</span>
@@ -17,7 +17,7 @@ export default function Hero() {
         </h1>
 
         <p
-          className="reveal d3 mx-auto"
+          className="hero-in d2 mx-auto"
           style={{
             fontSize: "clamp(1.05rem,1.9vw,1.32rem)",
             color: "var(--ink-dim)",
@@ -35,7 +35,7 @@ export default function Hero() {
           comercial de alto rendimiento.
         </p>
 
-        <div className="reveal d3 flex gap-4 justify-center flex-wrap">
+        <div className="hero-in d3 flex gap-4 justify-center flex-wrap">
           <a href="#contacto" className="btn btn-primary">
             Tengo un desafío específico <span className="arrow">→</span>
           </a>
@@ -45,7 +45,7 @@ export default function Hero() {
         </div>
 
         <div
-          className="reveal d3 flex gap-9 justify-center flex-wrap mt-14"
+          className="hero-in d3 flex gap-9 justify-center flex-wrap mt-14"
           style={{
             fontFamily: "var(--display)",
             fontSize: "0.78rem",
