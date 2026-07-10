@@ -1,16 +1,19 @@
+import dynamic from "next/dynamic";
 import Atmosphere from "@/components/Atmosphere";
 import LatticeCanvas from "@/components/LatticeCanvas";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Manifiesto from "@/components/Manifiesto";
-import Services from "@/components/Services";
-import Capacidades from "@/components/Capacidades";
-import Tecnologias from "@/components/Tecnologias";
-import Proceso from "@/components/Proceso";
-import FAQ from "@/components/FAQ";
-import Contacto from "@/components/Contacto";
-import Footer from "@/components/Footer";
 import RevealProvider from "@/components/RevealProvider";
+
+// Below-the-fold: load lazily to reduce initial JS bundle
+const Manifiesto  = dynamic(() => import("@/components/Manifiesto"));
+const Services    = dynamic(() => import("@/components/Services"));
+const Capacidades = dynamic(() => import("@/components/Capacidades"));
+const Tecnologias = dynamic(() => import("@/components/Tecnologias"));
+const Proceso     = dynamic(() => import("@/components/Proceso"));
+const FAQ         = dynamic(() => import("@/components/FAQ"));
+const Contacto    = dynamic(() => import("@/components/Contacto"));
+const Footer      = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (
