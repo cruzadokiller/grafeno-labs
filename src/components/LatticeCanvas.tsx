@@ -13,6 +13,8 @@ export default function LatticeCanvas() {
     if (!ctx) return;
 
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return; // skip animation on mobile to avoid blocking main thread
     const dpr = window.devicePixelRatio || 1;
     const COUNT = 72;
     const SPEED = 0.18;
