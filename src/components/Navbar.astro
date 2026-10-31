@@ -6,12 +6,13 @@ interface Props {
   cta?: { href: string; label: string };
 }
 
-const { cta = { href: "/#contacto", label: "Iniciar proyecto" } } = Astro.props;
+const { cta = { href: "/#contacto", label: "Conversemos" } } = Astro.props;
 
 // Rutas absolutas ("/#...") para que el menu funcione tambien desde /educacion.
 const links = [
   { href: "/#servicios", label: "Servicios" },
   { href: "/#industrias", label: "Industrias" },
+  { href: "/educacion", label: "Educación" },
   { href: "/#experiencia", label: "Experiencia" },
   { href: "/#faq", label: "FAQ" },
 ];
