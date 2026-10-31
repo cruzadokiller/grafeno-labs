@@ -46,8 +46,13 @@ const cols = [
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© {new Date().getFullYear()} Grafeno Labs. Todos los derechos reservados.</span>
+      <span>© <span id="year">{new Date().getFullYear()}</span> Grafeno Labs. Todos los derechos reservados.</span>
       <span>Construyendo ecosistemas, no solo webs.</span>
     </div>
   </div>
 </footer>
+
+<script>
+  // El HTML se genera en el build; el año se actualiza en el navegador para no quedar desfasado.
+  document.getElementById("year")!.textContent = String(new Date().getFullYear());
+</script>

@@ -1,16 +1,3 @@
 {
-  "framework": "astro",
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.grafenolabs.cl"
-        }
-      ],
-      "destination": "https://grafenolabs.cl/:path*",
-      "permanent": true
-    }
-  ]
+  "framework": "astro"
 }
