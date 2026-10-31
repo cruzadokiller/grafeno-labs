@@ -1,0 +1,21 @@
+---
+import SectionHead from "./SectionHead.astro";
+import Steps from "./Steps.astro";
+
+const steps = [
+  { n: "FASE 01", title: "Diagnóstico", text: "Entendemos tu objetivo de negocio (ventas, leads o matrícula) y dónde se pierde hoy a lo largo del funnel." },
+  { n: "FASE 02", title: "Hipótesis", text: "Definimos qué acción mueve más la aguja comercial con el menor riesgo y cómo la vamos a medir." },
+  { n: "FASE 03", title: "Construcción", text: "Ejecutamos: campaña, landing, desarrollo o agente de IA, según lo que el objetivo necesite, en ciclos cortos." },
+  { n: "FASE 04", title: "Medición", text: "Seguimos el impacto en las métricas que importan y escalamos solo lo que demuestra retorno." },
+];
+---
+
+<section id="proceso">
+  <div class="wrap">
+    <SectionHead eyebrow="El laboratorio">
+      <Fragment slot="title">Cómo <span class="chrome">experimentamos</span>.</Fragment>
+      Un método de laboratorio: hipótesis, prototipo, medición e iteración. Sin humo, con evidencia.
+    </SectionHead>
+    <Steps steps={steps} />
+  </div>
+</section>

@@ -1,0 +1,20 @@
+---
+export interface Props {
+  num: string;
+  icon: string;
+  title: string;
+  text: string;
+  items: string[];
+  delay?: string;
+}
+
+const { num, icon, title, text, items, delay } = Astro.props;
+---
+
+<div class:list={["svc", "reveal", delay]}>
+  <span class="svc-num">{num}</span>
+  <div class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true" set:html={icon} /></div>
+  <h3>{title}</h3>
+  <p>{text}</p>
+  <ul>{items.map((i) => <li>{i}</li>)}</ul>
+</div>

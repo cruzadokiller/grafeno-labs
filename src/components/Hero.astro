@@ -1,0 +1,70 @@
+---
+import { Picture } from "astro:assets";
+import heroLogo from "@/assets/logo-hero.webp";
+
+const meta = ["Marketing digital", "Funnels de conversión", "Analítica", "IA aplicada"];
+const paths = [
+  {
+    tag: "Atraer & vender",
+    title: "Más clientes y ventas",
+    text: "Marketing, medios pagados y funnels de conversión para que te encuentren, te elijan y te compren.",
+  },
+  {
+    tag: "Construir & automatizar",
+    title: "Producto, web e IA",
+    text: "Desarrollo web, apps, eCommerce y automatización con IA para crecer y operar mejor.",
+  },
+];
+---
+
+<!-- Hero con animacion solo CSS (.hero-in): no espera JS, mantiene el LCP rapido. -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <Picture
+      src={heroLogo}
+      formats={["avif"]}
+      fallbackFormat="webp"
+      alt="Grafeno Labs"
+      class="hero-logo hero-in"
+      widths={[290, 580]}
+      quality={60}
+      sizes="(max-width: 468px) 62vw, 290px"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="hero-in d1" style="margin-bottom:22px"><span class="eyebrow">Marketing · Desarrollo · IA</span></div>
+    <h1 class="hero-in d1">
+      <span class="line">No construimos webs.</span>
+      <span class="line"><span class="chrome">Construimos crecimiento digital</span>.</span>
+    </h1>
+    <p class="lead hero-in d2">
+      Unimos <b>marketing</b>, <b>funnels de conversión</b> y <b>tecnología</b> en un solo sistema para atraer,
+      convertir y vender más. Partimos del negocio, no de la herramienta.
+    </p>
+    <div class="hero-ctas hero-in d3">
+      <a href="#contacto" class="btn btn-primary">Agenda un diagnóstico <span class="arrow">→</span></a>
+      <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+    </div>
+    <div class="hero-meta hero-in d3">
+      {meta.map((m) => <span>{m}</span>)}
+    </div>
+
+    <div class="paths reveal d3">
+      {
+        paths.map((p) => (
+          <a href="#servicios" class="path-card">
+            <span class="path-tag">{p.tag}</span>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+            <span class="go">
+              Ver cómo <span class="arrow">→</span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+    <p class="hero-founders reveal d3">
+      ¿Tienes una idea para validar? Conoce nuestra <a href="#servicios">factoría de MVPs</a> para founders.
+    </p>
+  </div>
+</section>

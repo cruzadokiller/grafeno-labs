@@ -1,0 +1,29 @@
+---
+import SectionHead from "@/components/SectionHead.astro";
+
+const pains = [
+  { big: "Fuga", text: "Muchos leads en la parte alta del funnel, pocos llegan a matrícula. Nadie sabe bien dónde se pierden.", delay: "" },
+  { big: "Costo", text: "El costo por matrícula sube cada temporada y la inversión en medios no se puede atribuir a resultados reales.", delay: "d1" },
+  { big: "Datos", text: "Marketing, admisión y sistemas no hablan entre sí; los datos del estudiante quedan dispersos y sin trazabilidad.", delay: "d2" },
+];
+---
+
+<section id="desafio">
+  <div class="wrap">
+    <SectionHead eyebrow="El desafío">
+      <Fragment slot="title">El problema casi nunca es <span class="chrome">falta de interesados</span>.</Fragment>
+      La mayoría de las instituciones no tiene un problema de tráfico, sino de <b>fugas en el funnel</b>: interesados que no
+      postulan, postulantes que no se matriculan y campañas que no se pueden medir hasta el final.
+    </SectionHead>
+    <div class="pain-grid">
+      {
+        pains.map((p) => (
+          <div class:list={["pain", "reveal", p.delay]}>
+            <div class="big">{p.big}</div>
+            <p>{p.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

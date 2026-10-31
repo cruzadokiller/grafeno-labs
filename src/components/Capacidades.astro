@@ -1,0 +1,32 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+const cells = [
+  { k: "01", v: "Marketing digital", d: "SEO · GEO · AEO · medios pagados · RRSS" },
+  { k: "02", v: "Funnels, CRM & conversión", d: "Landing pages, gestión de leads (CRM) y CRO" },
+  { k: "03", v: "Medición & marcaje", d: "Arquitectura de medición, GTM, GA4 y Looker" },
+  { k: "04", v: "Desarrollo web & apps", d: "Sitios, plataformas, PWA y backend seguro" },
+  { k: "05", v: "E-commerce", d: "Tiendas que venden de punta a punta" },
+  { k: "06", v: "IA, automatización & spec-driven", d: "Agentes, RAG y procesos asistidos por IA" },
+];
+---
+
+<section id="capacidades" class="cap">
+  <div class="wrap">
+    <SectionHead eyebrow="Capacidades">
+      <Fragment slot="title">Un laboratorio, <span class="chrome">todas las capacidades</span>.</Fragment>
+      Disciplinas que combinamos según el desafío: nunca una herramienta suelta, siempre un sistema coherente.
+    </SectionHead>
+    <div class="cap-grid reveal d1">
+      {
+        cells.map((c) => (
+          <div class="cap-cell">
+            <div class="k">{c.k}</div>
+            <div class="v">{c.v}</div>
+            <div class="d">{c.d}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

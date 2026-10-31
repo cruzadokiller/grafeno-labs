@@ -1,0 +1,35 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+const groups = [
+  {
+    label: "Marketing & analítica",
+    chips: ["Google Analytics 4", "Google Tag Manager", "Looker Studio", "Google Ads", "Meta Ads", "Search Console", "Marcaje & GTM server-side", "CRM & automatización", "SEO · GEO · AEO"],
+    delay: "d1",
+  },
+  {
+    label: "Producto & desarrollo",
+    chips: ["React", "Next.js", "TypeScript", "Tailwind CSS", "WooCommerce", "PostgreSQL", "PWA", "Google Gemini", "RAG & agentes", "n8n · automatización", "Spec-driven dev", "Vercel"],
+    delay: "d2",
+  },
+];
+---
+
+<section id="tecnologias" class="tech">
+  <div class="wrap">
+    <SectionHead eyebrow="Tecnologías">
+      <Fragment slot="title">Las herramientas con las que <span class="chrome">medimos y crecemos</span>.</Fragment>
+      Las mismas que usan los equipos de marketing y producto de alto nivel. Elegimos la correcta para cada proyecto.
+    </SectionHead>
+    {
+      groups.map((g) => (
+        <div class:list={["tech-group", "reveal", g.delay]}>
+          <p class="tech-group-lbl">{g.label}</p>
+          <div class="tech-chips">
+            {g.chips.map((c) => <span class="chip">{c}</span>)}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

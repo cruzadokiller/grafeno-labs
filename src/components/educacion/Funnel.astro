@@ -1,0 +1,21 @@
+---
+import SectionHead from "@/components/SectionHead.astro";
+import Steps from "@/components/Steps.astro";
+
+const stages = [
+  { n: "ETAPA 01", title: "Atracción", text: "Campañas y contenidos que llegan al postulante correcto: orgánico (SEO/GEO), Google y Meta Ads." },
+  { n: "ETAPA 02", title: "Interés & postulación", text: "Landing pages y formularios de postulación claros, rápidos y optimizados para convertir la visita en lead." },
+  { n: "ETAPA 03", title: "Conversión", text: "Seguimiento de leads conectado a admisión: nada se pierde entre el clic y el contacto humano." },
+  { n: "ETAPA 04", title: "Matrícula", text: "Medimos la matrícula como resultado final y optimizamos la inversión hacia lo que realmente llena vacantes." },
+];
+---
+
+<section id="funnel" class="cap">
+  <div class="wrap">
+    <SectionHead eyebrow="El funnel de admisión">
+      <Fragment slot="title">Cuatro etapas, <span class="chrome">medidas de punta a punta</span>.</Fragment>
+      Trabajamos cada etapa como parte de un mismo sistema, con la medición instalada para saber qué mover.
+    </SectionHead>
+    <Steps steps={stages} />
+  </div>
+</section>

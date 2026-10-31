@@ -1,0 +1,21 @@
+---
+import { CONTACT_EMAIL, whatsappUrl } from "@/lib/site";
+---
+
+<section id="contacto-edu" class="edu-cta">
+  <div class="wrap">
+    <span class="eyebrow reveal">Diagnóstico sin costo</span>
+    <h2 class="reveal d1">Veamos juntos dónde está <span class="chrome">tu fuga</span>.</h2>
+    <p class="reveal d2">
+      Agenda una conversación. Revisamos tu proceso de admisión actual y te mostramos, sin compromiso, dónde se pierden
+      postulantes y qué haríamos primero.
+    </p>
+    <div class="edu-cta-actions reveal d2">
+      <a href={whatsappUrl("Hola Grafeno Labs, quiero un diagnóstico para admisión")} class="btn btn-primary" target="_blank" rel="noopener">
+        Agendar por WhatsApp <span class="arrow">→</span>
+      </a>
+      <a href="/#contacto" class="btn btn-ghost">Dejar mis datos</a>
+      <a href={`mailto:${CONTACT_EMAIL}`} class="edu-mail">{CONTACT_EMAIL}</a>
+    </div>
+  </div>
+</section>

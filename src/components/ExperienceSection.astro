@@ -1,0 +1,32 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+interface Props {
+  id: string;
+  eyebrow: string;
+  sectors?: string[];
+}
+
+const { id, eyebrow, sectors } = Astro.props;
+---
+
+<section id={id} class="exp">
+  <div class="wrap">
+    <SectionHead eyebrow={eyebrow}>
+      <slot name="title" slot="title" />
+      <slot name="intro" />
+    </SectionHead>
+    <span class="exp-note reveal">Experiencia profesional del equipo, no una cartera de clientes de Grafeno Labs.</span>
+    <div class="exp-people reveal d1" style="grid-template-columns:1fr">
+      <div class="exp-person"><p><slot /></p></div>
+    </div>
+    {
+      sectors && (
+        <div class="exp-sectors reveal d2">
+          <span class="lbl">Sectores</span>
+          {sectors.map((s) => <span class="chip">{s}</span>)}
+        </div>
+      )
+    }
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import logo from "@/assets/logo.webp";
+
+const cols = [
+  {
+    title: "Servicios",
+    links: [
+      { href: "/#servicios", label: "Marketing digital" },
+      { href: "/#servicios", label: "Funnels & ventas digitales" },
+      { href: "/#servicios", label: "Tecnología e IA" },
+      { href: "/educacion", label: "Educación superior" },
+    ],
+  },
+  {
+    title: "Laboratorio",
+    links: [
+      { href: "/#experiencia", label: "Experiencia" },
+      { href: "/#industrias", label: "Industrias" },
+      { href: "/#faq", label: "Preguntas frecuentes" },
+      { href: "/#contacto", label: "Iniciar proyecto" },
+    ],
+  },
+];
+---
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="/#top" class="brand">
+          <Image src={logo} alt="Grafeno Labs" class="nav-mark" height={32} densities={[1, 2]} />
+          <span class="brand-name"><b>GRAFENO</b> <span>LABS</span></span>
+        </a>
+        <p>Laboratorio digital. Marketing, producto e IA en un solo equipo para atraer, convertir y vender más.</p>
+      </div>
+      <div class="foot-cols">
+        {
+          cols.map((c) => (
+            <div class="foot-col">
+              <h4>{c.title}</h4>
+              {c.links.map((l) => <a href={l.href}>{l.label}</a>)}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© {new Date().getFullYear()} Grafeno Labs. Todos los derechos reservados.</span>
+      <span>Construyendo ecosistemas, no solo webs.</span>
+    </div>
+  </div>
+</footer>

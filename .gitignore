@@ -13,9 +13,13 @@
 # testing
 /coverage
 
-# next.js
+# astro
+/dist/
+.astro/
+
+# build antiguo de Next.js (ya no se usa)
 /.next/
-/out/
+next-env.d.ts
 
 # production
 /build
@@ -38,5 +42,4 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 dev.log

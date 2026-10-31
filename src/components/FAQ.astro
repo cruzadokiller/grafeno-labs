@@ -1,0 +1,75 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+// `a` es la respuesta visible (HTML); `text` es la version en texto plano para el JSON-LD.
+const faqs = [
+  {
+    q: "¿Cómo miden el retorno de una campaña o inversión en marketing?",
+    a: "Antes de invertir definimos qué significa éxito (ventas, leads o matrículas) y dejamos la <b>medición instalada</b>: GA4, Tag Manager y paneles en Looker Studio que conectan cada peso con su resultado. Así sabes el costo por lead o por venta y qué canal rinde, en lugar de reportes de impresiones que no dicen nada del negocio.",
+    text: "Antes de invertir definimos qué significa éxito (ventas, leads o matrículas) y dejamos la medición instalada: GA4, Tag Manager y paneles en Looker Studio que conectan cada peso con su resultado. Así sabes el costo por lead o por venta y qué canal rinde.",
+  },
+  {
+    q: "¿Trabajan con instituciones de educación superior?",
+    a: 'Sí, es uno de nuestros focos. Entendemos el <b>funnel de admisión</b> completo: desde la captación del interesado hasta la matrícula, pasando por postulación y conversión. Combinamos marketing, campañas y tecnología para llenar vacantes, con especial cuidado en la <b>protección de los datos</b> de postulantes y estudiantes, considerando la Ley 21.719. Puedes ver el detalle en nuestra <a href="/educacion">propuesta para educación superior</a>.',
+    text: "Sí, es uno de nuestros focos. Entendemos el funnel de admisión completo, de la captación a la matrícula, combinando marketing, campañas y tecnología, con especial cuidado en la protección de los datos de postulantes y estudiantes.",
+  },
+  {
+    q: "¿Cómo se coordinan con mi equipo comercial o de admisión?",
+    a: "Trabajamos pegados a tu equipo, no en paralelo. Conectamos los <b>leads</b> que generamos con tu proceso comercial o de admisión (CRM, planillas o el sistema que uses), acordamos cómo se hace el seguimiento y revisamos juntos los números. El marketing sirve de poco si el lead se pierde al llegar al equipo de ventas.",
+    text: "Trabajamos pegados a tu equipo: conectamos los leads que generamos con tu proceso comercial o de admisión (CRM o el sistema que uses), acordamos el seguimiento y revisamos juntos los números.",
+  },
+  {
+    q: "¿Qué es el CRO y cómo impacta en mis ventas?",
+    a: "El <b>CRO</b> (optimización de la tasa de conversión) consiste en lograr que un mayor porcentaje de tus visitantes haga lo que esperas: comprar, registrarse o contactar. En vez de gastar más en atraer tráfico, exprimimos mejor el que ya tienes mediante experimentación y datos. Es una de las palancas de mayor retorno: pequeñas mejoras de conversión multiplican ingresos sin aumentar el costo de adquisición.",
+    text: "El CRO (optimización de la tasa de conversión) busca que más visitantes hagan lo que esperas: comprar, registrarse o contactar. En vez de gastar más en tráfico, aprovechamos mejor el que ya tienes mediante experimentación y datos.",
+  },
+  {
+    q: "¿Cómo aplican inteligencia artificial en empresas reales?",
+    a: "Trabajamos con casos concretos, no con promesas. Implementamos <b>agentes</b> que ejecutan tareas operativas y sistemas <b>RAG</b> que responden con el conocimiento real de tu empresa (documentos, procesos, catálogo) en lugar de inventar. El objetivo siempre es la <b>eficiencia operativa medible</b>: menos horas en tareas repetitivas, respuestas consistentes y decisiones mejor informadas.",
+    text: "Implementamos agentes que ejecutan tareas operativas y sistemas RAG que responden con el conocimiento real de la empresa en lugar de inventar. El objetivo es la eficiencia operativa medible: menos horas en tareas repetitivas y mejores decisiones.",
+  },
+  {
+    q: "¿Qué es la arquitectura headless y por qué la recomiendan?",
+    a: "La <b>arquitectura headless</b> separa la capa visual (el front-end que ve tu cliente) de la capa de contenido y datos (el back-end). En la práctica significa más velocidad, mejor SEO técnico y la libertad de cambiar el escaparate sin reconstruir todo el motor. Para el negocio: iteras más rápido, escalas sin reescribir y reduces el costo de cada cambio futuro.",
+    text: "La arquitectura headless separa la capa visual (front-end) de la capa de contenido y datos (back-end). Aporta más velocidad, mejor SEO técnico y la libertad de cambiar el escaparate sin reconstruir el motor.",
+  },
+  {
+    q: "¿En cuánto tiempo puedo validar un MVP?",
+    a: "Depende del alcance, pero nuestra <b>factoría de MVPs</b> está diseñada para llegar al mercado en ciclos cortos, normalmente de semanas, no meses. La meta no es construir el producto final, sino <b>validar la hipótesis de negocio</b> con usuarios reales antes de invertir a fondo. Si funciona, ya tienes una base técnica preparada para escalar.",
+    text: "Nuestra factoría de MVPs llega al mercado en ciclos cortos, normalmente semanas. La meta no es el producto final, sino validar la hipótesis de negocio con usuarios reales antes de invertir a fondo.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.text },
+  })),
+};
+---
+
+<section id="faq">
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />
+  <div class="wrap">
+    <SectionHead eyebrow="Preguntas frecuentes" center>
+      <Fragment slot="title">Lo técnico, traducido a <span class="chrome">valor</span>.</Fragment>
+    </SectionHead>
+    <!-- <details> nativo: acordeon accesible y sin JavaScript. `name` hace que se abra uno a la vez. -->
+    <div class="faq-list reveal d1">
+      {
+        faqs.map((f) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">
+              {f.q}
+              <span class="ic" />
+            </summary>
+            <div class="faq-a" set:html={f.a} />
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

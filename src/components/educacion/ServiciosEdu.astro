@@ -1,0 +1,43 @@
+---
+import SectionHead from "@/components/SectionHead.astro";
+import ServiceCard, { type Props as Service } from "@/components/ServiceCard.astro";
+import { ICON_PULSE, ICON_SCREEN, ICON_SPARK } from "@/components/icons";
+
+const services: Service[] = [
+  {
+    num: "01",
+    icon: ICON_PULSE,
+    title: "Campañas de admisión",
+    text: "Medios pagados y orgánicos orientados a postulación, por carrera, sede o periodo de admisión.",
+    items: ["Google Ads, Meta y RRSS", "SEO/GEO para carreras", "Segmentación por campaña"],
+  },
+  {
+    num: "02",
+    icon: ICON_SCREEN,
+    title: "Landing & funnels de postulación",
+    text: "Páginas de carrera y formularios que convierten, con la analítica instalada desde el día uno.",
+    items: ["Landing pages por carrera", "Marcaje y medición (GTM · GA4)", "CRM y seguimiento de postulantes"],
+    delay: "d1",
+  },
+  {
+    num: "03",
+    icon: ICON_SPARK,
+    title: "Automatización & IA",
+    text: "Respuesta inmediata a consultas de postulantes y seguimiento automatizado que descongestiona a admisión.",
+    items: ["Agentes para preguntas frecuentes", "Seguimiento y recordatorios", "Integración con tus sistemas"],
+    delay: "d2",
+  },
+];
+---
+
+<section id="servicios-edu">
+  <div class="wrap">
+    <SectionHead eyebrow="Qué hacemos" center>
+      <Fragment slot="title">Servicios para <span class="chrome">admisión y matrícula</span>.</Fragment>
+      Piezas que combinamos según el objetivo de cada proceso de admisión.
+    </SectionHead>
+    <div class="services-grid">
+      {services.map((s) => <ServiceCard {...s} />)}
+    </div>
+  </div>
+</section>

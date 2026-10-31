@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import logo from "@/assets/logo.webp";
+
+interface Props {
+  cta?: { href: string; label: string };
+}
+
+const { cta = { href: "/#contacto", label: "Iniciar proyecto" } } = Astro.props;
+
+// Rutas absolutas ("/#...") para que el menu funcione tambien desde /educacion.
+const links = [
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#industrias", label: "Industrias" },
+  { href: "/#experiencia", label: "Experiencia" },
+  { href: "/#faq", label: "FAQ" },
+];
+---
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="/#top" class="brand">
+      <Image src={logo} alt="Grafeno Labs" class="nav-mark" height={32} densities={[1, 2]} loading="eager" />
+      <span class="brand-name"><b>GRAFENO</b> <span>LABS</span></span>
+    </a>
+    <nav class="nav-links">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+    <a href={cta.href} class="nav-cta">{cta.label}</a>
+    <button class="burger" aria-label="Menú" aria-expanded="false" aria-controls="mobile-menu">
+      <svg width="24" height="24" stroke="currentColor" stroke-width="1.8" fill="none" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"></path>
+      </svg>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a href={cta.href} class="btn btn-primary">{cta.label} <span class="arrow">→</span></a>
+  </nav>
+</header>
+
+<script>
+  const hdr = document.getElementById("hdr")!;
+  const burger = hdr.querySelector<HTMLButtonElement>(".burger")!;
+
+  const onScroll = () => hdr.classList.toggle("scrolled", scrollY > 20);
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  const setOpen = (open: boolean) => {
+    hdr.classList.toggle("menu-open", open);
+    burger.setAttribute("aria-expanded", String(open));
+  };
+  burger.addEventListener("click", () => setOpen(!hdr.classList.contains("menu-open")));
+  hdr.querySelectorAll(".mobile-menu a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+</script>

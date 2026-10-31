@@ -1,0 +1,40 @@
+---
+import SectionHead from "@/components/SectionHead.astro";
+
+const horizons = [
+  {
+    tag: "Horizonte 1 · Quick wins",
+    title: "Campaña de admisión puntual",
+    text: "Impacto rápido en un proceso de admisión en curso, con lo que ya tienes, midiendo desde el primer peso.",
+    items: ["Campaña de medios enfocada", "Landing de postulación optimizada", "Panel de resultados en tiempo real"],
+  },
+  {
+    tag: "Horizonte 2 · Sistema",
+    title: "Sistema de admisión completo",
+    text: "El funnel de punta a punta como una máquina medible y repetible, temporada tras temporada.",
+    items: ["Estrategia anual de admisión", "Automatización e IA en el seguimiento", "Integración marketing ↔ admisión"],
+  },
+];
+---
+
+<section id="horizontes" class="cap">
+  <div class="wrap">
+    <SectionHead eyebrow="Cómo empezar">
+      <Fragment slot="title">Dos horizontes de <span class="chrome">trabajo</span>.</Fragment>
+      Puedes partir resolviendo una campaña puntual o construir el sistema de admisión completo. Ambos caminos empiezan con
+      un diagnóstico.
+    </SectionHead>
+    <div class="horizons reveal d1">
+      {
+        horizons.map((h) => (
+          <div class="horizon">
+            <span class="tag">{h.tag}</span>
+            <h3>{h.title}</h3>
+            <p>{h.text}</p>
+            <ul>{h.items.map((i) => <li>{i}</li>)}</ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

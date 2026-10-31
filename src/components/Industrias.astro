@@ -1,0 +1,54 @@
+---
+import SectionHead from "./SectionHead.astro";
+
+const industries = [
+  {
+    tag: "Empresas & pymes",
+    title: "Más clientes, mejores procesos",
+    text: "Más leads, procesos comerciales ordenados y automatización con IA para equipos que quieren crecer.",
+    cta: "Conversemos",
+    href: "#contacto",
+    delay: "",
+  },
+  {
+    tag: "eCommerce & retail",
+    title: "Tiendas que venden",
+    text: "De la visita a la compra: catálogo, conversión, medios pagados y una tienda online que escala.",
+    cta: "Ver servicios",
+    href: "#servicios",
+    delay: "d1",
+  },
+  {
+    tag: "Educación superior",
+    title: "Admisión y matrícula",
+    text: "Campañas y funnels de postulación que llenan vacantes. Tenemos una propuesta dedicada para el sector.",
+    cta: "Ver propuesta",
+    href: "/educacion",
+    delay: "d2",
+  },
+];
+---
+
+<section id="industrias">
+  <div class="wrap">
+    <SectionHead eyebrow="Industrias">
+      <Fragment slot="title">Trabajamos con <span class="chrome">cualquier industria</span>.</Fragment>
+      El mismo sistema (marketing, conversión y tecnología) se adapta a tu negocio. Estos son algunos sectores donde ya
+      conocemos el terreno.
+    </SectionHead>
+    <div class="ind-grid">
+      {
+        industries.map((i) => (
+          <a href={i.href} class:list={["ind-card", "reveal", i.delay]}>
+            <span class="tag">{i.tag}</span>
+            <h3>{i.title}</h3>
+            <p>{i.text}</p>
+            <span class="go">
+              {i.cta} <span class="arrow">→</span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

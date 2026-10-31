@@ -1,0 +1,15 @@
+---
+interface Props {
+  eyebrow: string;
+  center?: boolean;
+  maxWidth?: number;
+}
+
+const { eyebrow, center, maxWidth } = Astro.props;
+---
+
+<div class:list={["sec-head", "reveal", { center }]} style={maxWidth ? `max-width:${maxWidth}px` : undefined}>
+  <span class="eyebrow">{eyebrow}</span>
+  <h2><slot name="title" /></h2>
+  {Astro.slots.has("default") && <p><slot /></p>}
+</div>

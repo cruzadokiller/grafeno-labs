@@ -1,0 +1,42 @@
+---
+import Base from "@/layouts/Base.astro";
+import ExperienceSection from "@/components/ExperienceSection.astro";
+import EduHero from "@/components/educacion/EduHero.astro";
+import Desafio from "@/components/educacion/Desafio.astro";
+import Funnel from "@/components/educacion/Funnel.astro";
+import ServiciosEdu from "@/components/educacion/ServiciosEdu.astro";
+import Datos from "@/components/educacion/Datos.astro";
+import Horizontes from "@/components/educacion/Horizontes.astro";
+import EduCta from "@/components/educacion/EduCta.astro";
+
+const title = "Grafeno Labs para Educación Superior — Más postulantes, más matrícula";
+const description =
+  "Marketing, funnels de admisión y tecnología para instituciones de educación superior. De la captación a la matrícula, con medición y cuidado en la protección de datos personales.";
+---
+
+<Base
+  title={title}
+  description={description}
+  path="/educacion"
+  ogTitle={title}
+  ogDescription={description}
+  navCta={{ href: "#contacto-edu", label: "Diagnóstico sin costo" }}
+>
+  <EduHero />
+  <Desafio />
+  <Funnel />
+  <ServiciosEdu />
+  <ExperienceSection id="experiencia-edu" eyebrow="Experiencia en educación">
+    <Fragment slot="title">Conocemos la admisión <span class="chrome">desde adentro</span>.</Fragment>
+    <Fragment slot="intro">
+      No llegamos a aprender cómo funciona una institución de educación superior: nuestro equipo ya dirigió admisión y
+      marketing en el sector durante años.
+    </Fragment>
+    Dentro del equipo tenemos experiencia directa <b>dirigiendo admisión y marketing en educación superior</b>: captación,
+    postulación, matrícula y la coordinación entre marketing y los equipos de admisión. Esa mirada operativa, sumada a producto
+    y tecnología, es la que traemos a cada proceso.
+  </ExperienceSection>
+  <Datos />
+  <Horizontes />
+  <EduCta />
+</Base>

@@ -1,0 +1,77 @@
+---
+import { Font } from "astro:assets";
+import Navbar from "@/components/Navbar.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE_URL } from "@/lib/site";
+import "@/styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogTitle: string;
+  ogDescription: string;
+  navCta?: { href: string; label: string };
+}
+
+const { title, description, path, ogTitle, ogDescription, navCta } = Astro.props;
+const url = `${SITE_URL}${path}`;
+const ogImage = `${SITE_URL}/og-image.png`;
+---
+
+<!doctype html>
+<html lang="es-CL">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>document.documentElement.classList.add("js");</script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#07080a" />
+    <meta name="msvalidate.01" content="AF34C7A7EB7C10F97986D73D22DE01CF" />
+    <link rel="canonical" href={url} />
+
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Grafeno Labs — Construimos crecimiento digital" />
+    <meta name="twitter:description" content="Marketing, funnels, tecnología e IA para atraer, convertir y vender más." />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png" />
+    <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png" />
+    <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon-192.png" sizes="192x192" />
+
+    <Font cssVariable="--font-hanken" preload />
+    <Font cssVariable="--font-chakra" preload={[{ weight: "500" }, { weight: "600" }, { weight: "700" }]} />
+    <slot name="head" />
+  </head>
+  <body>
+    <div class="hex-pattern"></div>
+    <canvas id="lattice"></canvas>
+    <div class="glow-top"></div>
+    <svg class="grain" width="100%" height="100%" aria-hidden="true">
+      <filter id="grainF"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" /></filter>
+      <rect width="100%" height="100%" filter="url(#grainF)" />
+    </svg>
+
+    <Navbar cta={navCta} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      import "@/scripts/reveal";
+      import "@/scripts/lattice";
+      import "@/scripts/analytics";
+    </script>
+  </body>
+</html>
