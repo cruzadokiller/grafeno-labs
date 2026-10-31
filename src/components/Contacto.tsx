@@ -1,6 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { CONTACT_EMAIL, whatsappUrl } from "@/lib/site";
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
 
 const points = [
   "Diagnóstico inicial sin compromiso",
@@ -10,11 +17,10 @@ const points = [
 ];
 
 const projectTypes = [
-  "Marketing & posicionamiento (SEO/SEM)",
-  "Desarrollo web o aplicación",
-  "E-commerce",
-  "Inteligencia artificial (agentes / RAG)",
-  "Transformación digital / Arquitectura",
+  "Marketing digital",
+  "Admisión y educación",
+  "eCommerce",
+  "Tecnología e IA",
   "Otro / no estoy seguro",
 ];
 
@@ -181,6 +187,8 @@ export default function Contacto() {
         throw new Error(body?.error || "No se pudo enviar el mensaje.");
       }
 
+      // Conversión para GA4 (gtag se carga en layout.tsx con lazyOnload, puede no estar aún).
+      window.gtag?.("event", "generate_lead", { form_id: "leadForm", project_type: payload.reto });
       setSubmitted(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "No se pudo enviar el mensaje.");
@@ -223,6 +231,25 @@ export default function Contacto() {
                 </div>
               ))}
             </div>
+
+            <div className="flex flex-col items-start" style={{ marginTop: 30, gap: 14 }}>
+              <a
+                href={whatsappUrl("Hola Grafeno Labs, quiero conversar un proyecto")}
+                target="_blank"
+                rel="noopener"
+                className="btn-wa"
+              >
+                <WhatsAppIcon />
+                Escríbenos por WhatsApp
+              </a>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="no-underline transition-colors duration-200 hover:text-accent"
+                style={{ color: "var(--ink-dim)", fontSize: "0.95rem", borderBottom: "1px solid var(--line-strong)", paddingBottom: 2 }}
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </div>
           </div>
 
           <div
@@ -236,7 +263,7 @@ export default function Contacto() {
             }}
           >
             {!submitted ? (
-              <form onSubmit={handleSubmit} autoComplete="on">
+              <form id="leadForm" onSubmit={handleSubmit} autoComplete="on">
                 <span
                   style={{
                     fontFamily: "var(--display)",
@@ -311,11 +338,11 @@ export default function Contacto() {
                     required
                   />
                 </Field>
-                <Field label="Contexto">
+                <Field label="Contexto (opcional)">
                   <textarea
                     id="mensaje"
                     name="mensaje"
-                    placeholder="Cuéntanos qué quieres construir o validar"
+                    placeholder="Cuéntanos qué quieres lograr"
                     style={{ ...inputStyle, resize: "vertical", minHeight: 96 }}
                   />
                 </Field>
@@ -378,5 +405,13 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
       </label>
       {children}
     </div>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+      <path d="M12 2a10 10 0 0 0-8.7 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm4.3 10.1c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.1.1-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.7.7-.9 1.6-.6 2.6.6 1.9 1.9 3.3 3.8 4.2 1.4.7 2.3.7 3 .5.5-.1 1.4-.6 1.6-1.2.2-.5.2-1 .1-1.1l-.4-.3z" />
+    </svg>
   );
 }

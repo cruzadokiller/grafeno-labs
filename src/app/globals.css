@@ -166,6 +166,27 @@
 .hero-in.d2 { animation-delay: 0.15s; }
 .hero-in.d3 { animation-delay: 0.25s; }
 
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #eafff2;
+  background: linear-gradient(155deg, #25d366, #128c45);
+  padding: 13px 22px;
+  border-radius: 11px;
+  text-decoration: none;
+  box-shadow: 0 6px 24px -10px rgba(37, 211, 102, 0.6);
+  transition: 0.25s;
+}
+
+.btn-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px -10px rgba(37, 211, 102, 0.8);
+}
+
 .chip {
   font-family: var(--display);
   font-weight: 500;

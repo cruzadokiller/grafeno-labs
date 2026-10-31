@@ -6,5 +6,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: "https://grafenolabs.cl/",
       lastModified: new Date(),
     },
+    {
+      url: "https://grafenolabs.cl/educacion",
+      lastModified: new Date(),
+    },
   ];
 }

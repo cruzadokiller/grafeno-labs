@@ -1,15 +1,12 @@
 "use client";
 
 const cells = [
-  { k: "01", v: "Posicionamiento orgánico", d: "SEO · GEO · AEO" },
-  { k: "02", v: "Medios pagados", d: "Google Ads · Meta · RRSS" },
-  { k: "03", v: "CRO & Analítica", d: "Más conversión con los visitantes que ya tienes" },
-  { k: "04", v: "Desarrollo web a medida", d: "Sitios y plataformas de alto rendimiento" },
-  { k: "05", v: "Aplicaciones & PWA", d: "Instalables, con notificaciones y modo offline" },
-  { k: "06", v: "Arquitectura & Design systems", d: "Escalas y cambias sin reconstruir todo" },
-  { k: "07", v: "E-commerce", d: "Vende online de punta a punta" },
-  { k: "08", v: "IA aplicada", d: "Agentes y automatización que ahorran horas" },
-  { k: "09", v: "Backend, datos & seguridad", d: "La infraestructura sólida detrás de todo" },
+  { k: "01", v: "Marketing digital", d: "SEO · GEO · AEO · medios pagados · RRSS" },
+  { k: "02", v: "Funnels, CRM & conversión", d: "Landing pages, gestión de leads (CRM) y CRO" },
+  { k: "03", v: "Medición & marcaje", d: "Arquitectura de medición, GTM, GA4 y Looker" },
+  { k: "04", v: "Desarrollo web & apps", d: "Sitios, plataformas, PWA y backend seguro" },
+  { k: "05", v: "E-commerce", d: "Tiendas que venden de punta a punta" },
+  { k: "06", v: "IA, automatización & spec-driven", d: "Agentes, RAG y procesos asistidos por IA" },
 ];
 
 export default function Capacidades() {

@@ -1,54 +1,71 @@
-const services = [
+export type Service = {
+  num: string;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  items: string[];
+  delay: string;
+};
+
+export const serviceIconStyle: React.CSSProperties = {
+  width: 26,
+  height: 26,
+  stroke: "var(--accent)",
+  fill: "none",
+  strokeWidth: 1.6,
+};
+
+const services: Service[] = [
   {
     num: "01",
     icon: (
-      <svg viewBox="0 0 24 24" style={{ width: 26, height: 26, stroke: "var(--accent)", fill: "none", strokeWidth: 1.6 }}>
+      <svg viewBox="0 0 24 24" style={serviceIconStyle}>
         <path d="M3 12h4l2-7 4 14 2-7h6" />
       </svg>
     ),
-    title: "Transformación Digital",
+    title: "Marketing digital",
     description:
-      "Auditamos tu ecosistema, diseñamos arquitectura headless y trazamos un roadmap tecnológico alineado a tus objetivos comerciales.",
+      "Hacemos que te encuentren y te elijan: posicionamiento, medios pagados y contenidos que atraen a la audiencia correcta.",
     items: [
-      "Auditoría técnica y de conversión (CRO)",
-      "Arquitectura headless & ecosistemas escalables",
-      "Roadmap tecnológico con prioridades de negocio",
+      "Posicionamiento orgánico (SEO · GEO · AEO)",
+      "Medios pagados (Google Ads · Meta · RRSS)",
+      "Estrategia de contenidos y marca",
     ],
     delay: "",
   },
   {
     num: "02",
     icon: (
-      <svg viewBox="0 0 24 24" style={{ width: 26, height: 26, stroke: "var(--accent)", fill: "none", strokeWidth: 1.6 }}>
+      <svg viewBox="0 0 24 24" style={serviceIconStyle}>
         <path d="M12 2l8 4.5v9L12 20l-8-4.5v-9z" />
         <path d="M12 11v9M4 6.5l8 4.5 8-4.5" />
       </svg>
     ),
-    title: "Factoría de MVPs",
+    title: "Funnels & ventas digitales",
     description:
-      "Desarrollo ágil orientado a validar hipótesis de negocio: pasas de la idea al producto en el mercado sin sobreinvertir.",
+      "Convertimos el tráfico en clientes: landing pages, optimización de conversión y gestión de leads conectada a tu proceso comercial.",
     items: [
-      "Del concepto al MVP en ciclos cortos",
-      "Validación real con usuarios y métricas",
-      "Base técnica lista para escalar",
+      "Landing pages y funnels de conversión",
+      "Arquitectura de medición y marcaje (GTM · GA4)",
+      "CRM y gestión de leads",
     ],
     delay: "d1",
   },
   {
     num: "03",
     icon: (
-      <svg viewBox="0 0 24 24" style={{ width: 26, height: 26, stroke: "var(--accent)", fill: "none", strokeWidth: 1.6 }}>
+      <svg viewBox="0 0 24 24" style={serviceIconStyle}>
         <circle cx="12" cy="12" r="3" />
         <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" />
       </svg>
     ),
-    title: "Inteligencia Artificial",
+    title: "Tecnología e IA",
     description:
-      "Implementamos agentes y sistemas RAG que recuperan tu conocimiento y optimizan la eficiencia operativa donde más cuesta.",
+      "Construimos la plataforma que sostiene todo: desarrollo web y de apps, MVPs, automatización y agentes de IA que ahorran horas.",
     items: [
-      "Agentes y automatización de procesos",
-      "RAG sobre tu conocimiento interno",
-      "Eficiencia operativa medible",
+      "Desarrollo web, apps y MVPs (spec-driven con IA)",
+      "Agentes, RAG y automatización de procesos",
+      "Integraciones: CRM, APIs y datos",
     ],
     delay: "d2",
   },
@@ -61,12 +78,12 @@ export default function Services() {
         <div className="reveal text-center mx-auto mb-14" style={{ maxWidth: 680 }}>
           <span className="eyebrow">Servicios</span>
           <h2 style={{ fontSize: "clamp(2rem,4vw,3rem)", margin: "18px 0 16px" }}>
-            Tres frentes, una{" "}
-            <span className="chrome-text">misma lógica</span>: que la tecnología venda.
+            Tres frentes, un mismo objetivo: que todo{" "}
+            <span className="chrome-text">venda</span>.
           </h2>
           <p style={{ color: "var(--ink-dim)", fontSize: "1.06rem" }}>
-            Cada servicio traduce decisiones de ingeniería en resultados de negocio medibles
-            para quienes toman decisiones.
+            Cada frente se traduce en resultados de negocio medibles: más tráfico cualificado, más
+            conversión y más ventas o matrículas.
           </p>
         </div>
 
@@ -83,14 +100,7 @@ export default function Services() {
   );
 }
 
-function ServiceCard({
-  num,
-  icon,
-  title,
-  description,
-  items,
-  delay,
-}: (typeof services)[number]) {
+export function ServiceCard({ num, icon, title, description, items, delay }: Service) {
   return (
     <div
       className={`reveal ${delay} relative overflow-hidden group transition-all duration-300`}

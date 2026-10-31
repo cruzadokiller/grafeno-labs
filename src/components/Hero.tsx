@@ -1,18 +1,41 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <section
       id="top"
       className="relative text-center"
-      style={{ padding: "170px 0 96px" }}
+      style={{ padding: "130px 0 96px" }}
     >
       <div className="mx-auto px-7" style={{ maxWidth: 980 }}>
+        <Image
+          src="/logo-hero.webp"
+          alt="Grafeno Labs"
+          width={600}
+          height={448}
+          loading="eager"
+          fetchPriority="high"
+          sizes="290px"
+          className="hero-in block mx-auto"
+          style={{
+            width: "min(290px, 62vw)",
+            height: "auto",
+            marginBottom: 22,
+            filter: "drop-shadow(0 10px 38px rgba(95,180,255,.18))",
+          }}
+        />
+
+        <div className="hero-in d1" style={{ marginBottom: 22 }}>
+          <span className="eyebrow">Marketing · Desarrollo · IA</span>
+        </div>
+
         <h1
-          className="hero-in"
+          className="hero-in d1"
           style={{ fontSize: "clamp(2.6rem,6.4vw,5.1rem)", fontWeight: 700, marginBottom: 26 }}
         >
           <span className="block overflow-hidden">No construimos webs.</span>
           <span className="block overflow-hidden">
-            Construimos <span className="chrome-text">crecimiento digital</span>.
+            <span className="chrome-text">Construimos crecimiento digital</span>.
           </span>
         </h1>
 
@@ -27,20 +50,18 @@ export default function Hero() {
             lineHeight: 1.65,
           }}
         >
-          Operamos como un{" "}
-          <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
-            laboratorio de experimentación
-          </strong>{" "}
-          donde la arquitectura técnica es el soporte de una estrategia
-          comercial de alto rendimiento.
+          Unimos <strong style={{ color: "var(--ink)", fontWeight: 600 }}>marketing</strong>,{" "}
+          <strong style={{ color: "var(--ink)", fontWeight: 600 }}>funnels de conversión</strong> y{" "}
+          <strong style={{ color: "var(--ink)", fontWeight: 600 }}>tecnología</strong> en un solo
+          sistema para atraer, convertir y vender más. Partimos del negocio, no de la herramienta.
         </p>
 
         <div className="hero-in d3 flex gap-4 justify-center flex-wrap">
           <a href="#contacto" className="btn btn-primary">
-            Tengo un desafío específico <span className="arrow">→</span>
+            Agenda un diagnóstico <span className="arrow">→</span>
           </a>
           <a href="#servicios" className="btn btn-ghost">
-            Explorar capacidades
+            Ver servicios
           </a>
         </div>
 
@@ -54,7 +75,7 @@ export default function Hero() {
             color: "var(--muted)",
           }}
         >
-          {["Marketing & CRO", "Arquitectura Headless", "Factoría de MVPs", "IA Aplicada"].map(
+          {["Marketing digital", "Funnels de conversión", "Analítica", "IA aplicada"].map(
             (label) => (
               <span key={label} className="flex items-center gap-2">
                 <span
@@ -83,18 +104,26 @@ export default function Hero() {
           }}
         >
           <PathCard
-            tag="Para empresas"
-            title="Modernizar el ecosistema"
-            description="Auditoría técnica, arquitectura headless y un roadmap con prioridades de negocio."
+            tag="Atraer & vender"
+            title="Más clientes y ventas"
+            description="Marketing, medios pagados y funnels de conversión para que te encuentren, te elijan y te compren."
             href="#servicios"
           />
           <PathCard
-            tag="Para founders"
-            title="Validar la idea"
-            description="De la hipótesis al MVP en ciclos cortos. Menos inversión, más aprendizaje."
+            tag="Construir & automatizar"
+            title="Producto, web e IA"
+            description="Desarrollo web, apps, eCommerce y automatización con IA para crecer y operar mejor."
             href="#servicios"
           />
         </div>
+
+        <p className="reveal d3 mx-auto" style={{ marginTop: 20, maxWidth: 760, fontSize: "0.92rem", color: "var(--muted)" }}>
+          ¿Tienes una idea para validar? Conoce nuestra{" "}
+          <a href="#servicios" style={{ color: "var(--accent)", textDecoration: "none" }}>
+            factoría de MVPs
+          </a>{" "}
+          para founders.
+        </p>
       </div>
     </section>
   );
@@ -155,7 +184,7 @@ function PathCard({
         className="inline-flex items-center gap-2 group-hover:[&_.arrow]:translate-x-1"
         style={{ fontFamily: "var(--display)", fontSize: "0.84rem", fontWeight: 600, color: "var(--ink)" }}
       >
-        Explorar <span className="arrow transition-transform duration-300">→</span>
+        Ver cómo <span className="arrow transition-transform duration-300">→</span>
       </span>
     </a>
   );

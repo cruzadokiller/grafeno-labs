@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Manifiesto from "@/components/Manifiesto";
 import Services from "@/components/Services";
+import Industrias from "@/components/Industrias";
+import Experiencia from "@/components/Experiencia";
 import Capacidades from "@/components/Capacidades";
 import Tecnologias from "@/components/Tecnologias";
 import Proceso from "@/components/Proceso";
@@ -22,6 +24,8 @@ export default function Home() {
         <Hero />
         <Manifiesto />
         <Services />
+        <Industrias />
+        <Experiencia />
         <Capacidades />
         <Tecnologias />
         <Proceso />

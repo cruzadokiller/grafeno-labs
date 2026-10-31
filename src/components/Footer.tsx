@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="mx-auto px-7" style={{ maxWidth: 1180 }}>
         <div className="flex justify-between gap-10 flex-wrap mb-10">
           <div style={{ maxWidth: 300 }}>
-            <Link href="#top" className="flex items-center gap-3 no-underline" style={{ color: "var(--ink)" }}>
+            <Link href="/#top" className="flex items-center gap-3 no-underline" style={{ color: "var(--ink)" }}>
               <Image
                 src="/logo.webp"
                 alt="Grafeno Labs"
@@ -25,8 +25,8 @@ export default function Footer() {
               </span>
             </Link>
             <p style={{ color: "var(--muted)", fontSize: "0.9rem", marginTop: 16, lineHeight: 1.6 }}>
-              Laboratorio de ecosistemas digitales. Arquitectura, producto e IA al servicio de tu
-              estrategia comercial.
+              Laboratorio digital. Marketing, producto e IA en un solo equipo para atraer, convertir
+              y vender más.
             </p>
           </div>
 
@@ -34,18 +34,19 @@ export default function Footer() {
             <FootCol
               title="Servicios"
               links={[
-                { href: "#servicios", label: "Transformación digital" },
-                { href: "#servicios", label: "Factoría de MVPs" },
-                { href: "#servicios", label: "Inteligencia artificial" },
-                { href: "#capacidades", label: "Marketing & CRO" },
+                { href: "/#servicios", label: "Marketing digital" },
+                { href: "/#servicios", label: "Funnels & ventas digitales" },
+                { href: "/#servicios", label: "Tecnología e IA" },
+                { href: "/educacion", label: "Educación superior" },
               ]}
             />
             <FootCol
               title="Laboratorio"
               links={[
-                { href: "#proceso", label: "Cómo trabajamos" },
-                { href: "#faq", label: "Preguntas frecuentes" },
-                { href: "#contacto", label: "Iniciar proyecto" },
+                { href: "/#experiencia", label: "Experiencia" },
+                { href: "/#industrias", label: "Industrias" },
+                { href: "/#faq", label: "Preguntas frecuentes" },
+                { href: "/#contacto", label: "Iniciar proyecto" },
               ]}
             />
           </div>
@@ -79,7 +80,7 @@ function FootCol({ title, links }: { title: string; links: { href: string; label
         {title}
       </h4>
       {links.map((l) => (
-        <a
+        <Link
           key={l.label}
           href={l.href}
           className="block no-underline transition-colors duration-200"
@@ -88,7 +89,7 @@ function FootCol({ title, links }: { title: string; links: { href: string; label
           onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--muted)")}
         >
           {l.label}
-        </a>
+        </Link>
       ))}
     </div>
   );

@@ -34,19 +34,14 @@ export default function Manifiesto() {
               color: "var(--ink-dim)",
             }}
           >
-            En Grafeno Labs{" "}
+            En Grafeno Labs no vendemos piezas sueltas, construimos{" "}
             <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
-              no construimos webs
+              sistemas de crecimiento medible
             </strong>
-            , construimos ecosistemas. Un laboratorio donde la{" "}
-            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
-              arquitectura técnica
-            </strong>{" "}
-            se convierte en estrategia comercial de{" "}
-            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>
-              alto rendimiento
-            </strong>
-            .
+            . Un laboratorio donde cada peso invertido puede seguirse hasta la{" "}
+            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>venta</strong> o la{" "}
+            <strong style={{ color: "var(--ink)", fontWeight: 600 }}>matrícula</strong>: medimos antes de
+            escalar.
           </blockquote>
           <div
             style={{

@@ -4,15 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+// Rutas absolutas ("/#...") para que el menú funcione también desde /educacion.
 const navLinks = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#capacidades", label: "Capacidades" },
-  { href: "#tecnologias", label: "Tecnologías" },
-  { href: "#proceso", label: "El laboratorio" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#industrias", label: "Industrias" },
+  { href: "/#experiencia", label: "Experiencia" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
-export default function Navbar() {
+export default function Navbar({
+  cta = { href: "#contacto", label: "Iniciar proyecto" },
+}: {
+  cta?: { href: string; label: string };
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -47,7 +51,7 @@ export default function Navbar() {
       >
         {/* Brand */}
         <Link
-          href="#top"
+          href="/#top"
           className="flex items-center gap-3 no-underline"
           style={{ color: "var(--ink)" }}
           onClick={closeMobile}
@@ -79,7 +83,7 @@ export default function Navbar() {
         {/* Desktop nav */}
         <nav className="hidden md:flex gap-8 items-center">
           {navLinks.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               className="relative no-underline text-sm font-medium transition-colors duration-200 group"
@@ -96,13 +100,13 @@ export default function Navbar() {
                 className="absolute left-0 bottom-[-6px] h-px w-0 group-hover:w-full transition-all duration-200"
                 style={{ background: "var(--accent)" }}
               />
-            </a>
+            </Link>
           ))}
         </nav>
 
         {/* CTA */}
         <a
-          href="#contacto"
+          href={cta.href}
           className="hidden md:inline-block no-underline text-sm font-semibold transition-all duration-200"
           style={{
             fontFamily: "var(--display)",
@@ -123,7 +127,7 @@ export default function Navbar() {
             el.style.background = "";
           }}
         >
-          Iniciar proyecto
+          {cta.label}
         </a>
 
         {/* Mobile burger */}
@@ -156,7 +160,7 @@ export default function Navbar() {
           }}
         >
           {navLinks.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               onClick={closeMobile}
@@ -164,14 +168,14 @@ export default function Navbar() {
               style={{ color: "var(--ink-dim)", fontFamily: "var(--display)" }}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
           <a
-            href="#contacto"
+            href={cta.href}
             onClick={closeMobile}
             className="btn btn-primary self-start"
           >
-            Iniciar proyecto <span className="arrow">→</span>
+            {cta.label} <span className="arrow">→</span>
           </a>
         </div>
       )}
