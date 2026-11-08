@@ -1,5 +1,5 @@
 export const SITE_URL = "https://grafenolabs.cl";
-export const CONTACT_EMAIL = "hola@grafenolabs.cl";
+export const CONTACT_EMAIL = "contacto@grafenolabs.cl";
 
 const WHATSAPP_NUMBER = "56981428348";
 

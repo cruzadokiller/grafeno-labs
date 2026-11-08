@@ -1,0 +1,39 @@
+---
+import SectionHead from "@/components/SectionHead.astro";
+
+const areas = [
+  { k: "01", v: "Campañas y segmentación", d: "Canales, audiencias e inversión por carrera" },
+  { k: "02", v: "Recorrido del postulante", d: "Del anuncio a la postulación, paso a paso" },
+  { k: "03", v: "Formularios y captura", d: "Cómo y dónde se registran los interesados" },
+  { k: "04", v: "Marcaje y medición", d: "Etiquetas, eventos y conversiones de punta a punta" },
+  { k: "05", v: "Seguimiento y CRM", d: "Gestión de cada lead hasta la matrícula" },
+  { k: "Entregable", v: "Plan de acción priorizado", d: "Acciones ordenadas por impacto en matrícula" },
+];
+---
+
+<section id="assessment" class="assess">
+  <div class="wrap">
+    <SectionHead eyebrow="Assessment de admisión digital">
+      <Fragment slot="title">Antes de invertir más, <span class="chrome">entendemos el sistema completo</span>.</Fragment>
+      Revisamos de punta a punta cómo llega, avanza y se convierte cada postulante, y entregamos un plan de acción priorizado
+      por impacto en matrícula.
+    </SectionHead>
+    <div class="cap-grid reveal d1">
+      {
+        areas.map((a) => (
+          <div class="cap-cell">
+            <div class="k">{a.k}</div>
+            <div class="v">{a.v}</div>
+            <div class="d">{a.d}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .assess {
+    border-top: 1px solid var(--line);
+  }
+</style>
