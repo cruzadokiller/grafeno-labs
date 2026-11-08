@@ -1,5 +1,6 @@
 ---
 import { CONTACT_EMAIL, whatsappUrl } from "@/lib/site";
+import { WA_ICON } from "@/components/icons";
 ---
 
 <section id="contacto-edu" class="edu-cta">
@@ -11,7 +12,8 @@ import { CONTACT_EMAIL, whatsappUrl } from "@/lib/site";
       la medida.
     </p>
     <div class="edu-cta-actions reveal d2">
-      <a href={whatsappUrl("Hola Grafeno Labs, quiero conversar sobre admisión")} class="btn btn-primary" target="_blank" rel="noopener">
+      <a href={whatsappUrl("Hola Grafeno Labs, quiero conversar sobre admisión")} class="btn btn-wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d={WA_ICON} /></svg>
         Agendar por WhatsApp <span class="arrow">→</span>
       </a>
       <a href="/#contacto" class="btn btn-ghost">Dejar mis datos</a>

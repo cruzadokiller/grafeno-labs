@@ -263,6 +263,8 @@ section{position:relative;padding:clamp(48px,7vw,74px) 0}
   color:#eafff2;background:linear-gradient(155deg,#25d366,#128c45);padding:13px 22px;border-radius:11px;text-decoration:none;
   box-shadow:0 6px 24px -10px rgba(37,211,102,.6);transition:.25s}
 .btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 32px -10px rgba(37,211,102,.8)}
+/* Variante con el tamaño de .btn, para ir junto a otros botones (ej. cierre de educacion) */
+.btn.btn-wa{padding:15px 26px;font-size:.92rem}
 .direct-mail{color:var(--ink-dim);text-decoration:none;font-size:.95rem;border-bottom:1px solid var(--line-strong);padding-bottom:2px;transition:.2s}
 .direct-mail:hover{color:var(--accent);border-color:var(--accent)}
 .field label .opt{text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400}
